@@ -1,0 +1,21 @@
+# 核心
+numpy
+scipy
+librosa
+soundfile
+opencc-python-reimplemented
+
+# 语音转写
+faster-whisper
+
+# 声纹
+speechbrain
+torch
+torchaudio
+
+# 情感
+transformers
+huggingface_hub
+
+# 声纹聚类（无参考样本时用）
+scikit-learn
