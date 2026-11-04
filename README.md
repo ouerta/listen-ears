@@ -147,4 +147,4 @@ python listen.py demo/demo_speech.wav --json
 
 ## 作者
 
-Ouerta · MIT License
+ouerta · MIT License
