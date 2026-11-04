@@ -1,0 +1,16 @@
+# 模型权重（用 download_models.py 现下）
+models/
+
+# 参考音频（声纹是生物特征，别提交）
+refs/
+
+# 生成的样本与产物
+samples/*.wav
+samples/*.mp3
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
