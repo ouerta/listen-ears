@@ -8,21 +8,10 @@
 注意：模型是英语语音情感训练的，用在中文歌声上只能当粗略参考（README 里说明）。
 """
 import argparse, json, os, subprocess, sys, tempfile
-
-def _models_dir():
-    """模型目录：优先环境变量 LISTEN_MODELS，否则用脚本旁边的 models/"""
-    env = os.environ.get('LISTEN_MODELS', '').strip()
-    if env:
-        return env
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models')
-
-
-
 import numpy as np
 
 SR = 16000
-# 模型目录见 _models_dir()（可用 LISTEN_MODELS 指定）
-MODEL_SUBDIR = 'emotion_superb'
+MODEL_DIR = r'W:\workspace\听声\models\emotion_superb'
 WIN = 4.0
 HOP = 2.0
 MIN_RMS = 0.02
@@ -43,11 +32,8 @@ def main():
     import torch, librosa
     from transformers import AutoFeatureExtractor, AutoModelForAudioClassification
 
-    model_dir = os.path.join(_models_dir(), MODEL_SUBDIR)
-    if not os.path.isdir(model_dir):
-        raise SystemExit(f'找不到情感模型目录：{model_dir}\n先运行 python download_models.py')
-    fe = AutoFeatureExtractor.from_pretrained(model_dir)
-    md = AutoModelForAudioClassification.from_pretrained(model_dir)
+    fe = AutoFeatureExtractor.from_pretrained(MODEL_DIR)
+    md = AutoModelForAudioClassification.from_pretrained(MODEL_DIR)
     md.eval()
     labels = {i: str(lab).lower() for i, lab in md.config.id2label.items()}
 
@@ -67,10 +53,18 @@ def main():
     pos = sorted([r for r in rms_all if r > 0], reverse=True)
     floor = max(MIN_RMS, 0.4 * pos[len(pos) // 2] if pos else 0.0)
 
+    # 先按门限过滤；如果一个都不剩（QQ 语音常常偏轻），退回"取最响的 3 窗"，
+    # 宁可标 low_confidence，也不要直接报"没有有声段"（实测踩过）
+    keep = [i for i, r in enumerate(rms_all) if r >= floor]
+    weak = False
+    if not keep and rms_all:
+        order = sorted(range(len(rms_all)), key=lambda i: -rms_all[i])[:3]
+        keep = sorted(order)
+        weak = True
+
     segs = []
-    for idx, s in enumerate(starts):
-        if rms_all[idx] < floor:
-            continue
+    for idx in keep:
+        s = starts[idx]
         chunk = y[s:s + win]
         inputs = fe(chunk, sampling_rate=SR, return_tensors='pt')
         with torch.no_grad():
@@ -100,6 +94,7 @@ def main():
         'file': a.audio,
         'seconds_analyzed': round(n * WIN, 1),
         'windows': n,
+        'lowVolume': weak,
         'dominant': order[0][0],
         'distribution': dict(order),
         'top_counts': {ZH.get(k, k): v for k, v in sorted(tally.items(), key=lambda x: -x[1])},

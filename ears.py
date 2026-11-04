@@ -7,7 +7,7 @@
 import argparse, json, os, subprocess, sys, tempfile
 
 def _models_dir():
-    """模型目录：优先环境变量 LISTEN_MODELS，否则用脚本旁边的 models/"""
+    """模型目录：优先 LISTEN_MODELS，否则用脚本旁边的 models/"""
     env = os.environ.get('LISTEN_MODELS', '').strip()
     if env:
         return env
@@ -37,7 +37,7 @@ def main():
 
     # ── 1. 说话内容 + 时间轴 ──
     from faster_whisper import WhisperModel
-    # 优先用本地 models/whisper-small（download_models.py 下的），否则按名字让 faster-whisper 自己找
+    # 优先本地模型：不走网络（桥接环境下 HF 下载会 SSL 证书失败）
     local = os.path.join(_models_dir(), 'whisper-small')
     model_ref = local if os.path.isdir(local) else a.model
     model = WhisperModel(model_ref, device=a.device, compute_type='int8')
