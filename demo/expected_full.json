@@ -1,91 +1,91 @@
 {
-    "file":  "W:\\workspace\\听声\\发布\\listen-ears-0.1.0\\demo\\demo_speech.wav",
-    "music":  {
-                  "file":  "W:\\workspace\\听声\\发布\\listen-ears-0.1.0\\demo\\demo_speech.wav",
-                  "duration":  9.16,
-                  "key":  {
-                              "estimate":  "C 大调",
-                              "confidence":  0.444,
-                              "reliable":  false
-                          },
-                  "tempo_bpm":  136.0,
-                  "mood":  {
-                               "label":  "抒情/中速",
-                               "confidence":  "low",
-                               "dims":  {
-                                            "energy":  0.89,
-                                            "brightness":  0.28
-                                        },
-                               "reasons":  [
-                                               "速度 136 BPM 很快",
-                                               "调性置信不足，未参与判断",
-                                               "音色中性",
-                                               "强弱对比明显"
-                                           ]
-                           },
-                  "tempo_hint":  "",
-                  "tempo_candidates":  [
-                                           68.0,
-                                           136.0
-                                       ],
-                  "pitch":  {
-                                "voiced_ratio":  0.157,
-                                "frames_used":  62,
-                                "mean_hz":  234.8,
-                                "median_hz":  244.6,
-                                "low_hz":  173.5,
-                                "high_hz":  275.3,
-                                "range_semitones":  8.0,
-                                "variability_st":  2.68,
-                                "variability_mad_st":  2.52,
-                                "frame_move_st":  0.297
-                            },
-                  "timbre":  {
-                                 "centroid_hz":  1712.0,
-                                 "bandwidth_hz":  1416.0,
-                                 "rolloff85_hz":  2986.0,
-                                 "flatness":  0.1516,
-                                 "mfcc_std_mean":  32.18,
-                                 "timbre_change":  32.51
-                             },
-                  "loudness":  {
-                                   "rel_db_mean":  -26.3,
-                                   "dynamic_range_db":  54.3
-                               },
-                  "summary":  "【抒情/中速】、中音区、音高起伏明显（情绪外放）、音色中性、噪声成分多（可能有鼓/气声）、节奏偏快、动态大（强弱对比明显）"
-              },
-    "emotion":  {
-                    "file":  "W:\\workspace\\听声\\发布\\listen-ears-0.1.0\\demo\\demo_speech.wav",
-                    "seconds_analyzed":  12.0,
-                    "windows":  3,
-                    "dominant":  "开心",
-                    "distribution":  {
-                                         "开心":  0.47,
-                                         "中性":  0.425,
-                                         "生气":  0.104,
-                                         "悲伤":  0.0
-                                     },
-                    "top_counts":  {
-                                       "开心":  2,
-                                       "中性":  1
-                                   },
-                    "timeline":  [
-                                     {
-                                         "s":  0.0,
-                                         "e":  4.0,
-                                         "e_":  "中性"
-                                     },
-                                     {
-                                         "s":  2.0,
-                                         "e":  6.0,
-                                         "e_":  "开心"
-                                     },
-                                     {
-                                         "s":  4.0,
-                                         "e":  8.0,
-                                         "e_":  "开心"
-                                     }
-                                 ]
-                },
-    "summary":  "调性 C 大调（置信不足）；速度约 136 BPM；音高中位 245 Hz（1.7 个八度跨度 8.0 半音，起伏 2.7）；音色质心 1712 Hz；音乐侧判断：【抒情/中速】、中音区、音高起伏明显（情绪外放）、音色中性、噪声成分多（可能有鼓/气声）、节奏偏快、动态大（强弱对比明显）；（调性置信不足，这段可能更像说话而不是音乐，调性/速度仅供参考）；情感：主导 开心（开心 47%、中性 42%、生气 10%、悲伤 0%）"
+  "file": "demo/demo_speech.wav",
+  "music": {
+    "file": "demo/demo_speech.wav",
+    "duration": 9.16,
+    "key": {
+      "estimate": "C 大调",
+      "confidence": 0.444,
+      "reliable": false
+    },
+    "tempo_bpm": 136.0,
+    "mood": {
+      "label": "抒情/中速",
+      "confidence": "low",
+      "dims": {
+        "energy": 0.89,
+        "brightness": 0.28
+      },
+      "reasons": [
+        "速度 136 BPM 很快",
+        "调性置信不足，未参与判断",
+        "音色中性",
+        "强弱对比明显"
+      ]
+    },
+    "tempo_hint": "",
+    "tempo_candidates": [
+      68.0,
+      136.0
+    ],
+    "pitch": {
+      "voiced_ratio": 0.157,
+      "frames_used": 62,
+      "mean_hz": 234.8,
+      "median_hz": 244.6,
+      "low_hz": 173.5,
+      "high_hz": 275.3,
+      "range_semitones": 8.0,
+      "variability_st": 2.68,
+      "variability_mad_st": 2.52,
+      "frame_move_st": 0.297
+    },
+    "timbre": {
+      "centroid_hz": 1712.0,
+      "bandwidth_hz": 1416.0,
+      "rolloff85_hz": 2986.0,
+      "flatness": 0.1516,
+      "mfcc_std_mean": 32.18,
+      "timbre_change": 32.51
+    },
+    "loudness": {
+      "rel_db_mean": -26.3,
+      "dynamic_range_db": 54.3
+    },
+    "summary": "【抒情/中速】、中音区、音高起伏明显（情绪外放）、音色中性、噪声成分多（可能有鼓/气声）、节奏偏快、动态大（强弱对比明显）"
+  },
+  "emotion": {
+    "file": "demo/demo_speech.wav",
+    "seconds_analyzed": 12.0,
+    "windows": 3,
+    "dominant": "开心",
+    "distribution": {
+      "开心": 0.47,
+      "中性": 0.425,
+      "生气": 0.104,
+      "悲伤": 0.0
+    },
+    "top_counts": {
+      "开心": 2,
+      "中性": 1
+    },
+    "timeline": [
+      {
+        "s": 0.0,
+        "e": 4.0,
+        "e_": "中性"
+      },
+      {
+        "s": 2.0,
+        "e": 6.0,
+        "e_": "开心"
+      },
+      {
+        "s": 4.0,
+        "e": 8.0,
+        "e_": "开心"
+      }
+    ]
+  },
+  "summary": "调性 C 大调（置信不足）；速度约 136 BPM；音高中位 245 Hz（1.7 个八度跨度 8.0 半音，起伏 2.7）；音色质心 1712 Hz；音乐侧判断：【抒情/中速】、中音区、音高起伏明显（情绪外放）、音色中性、噪声成分多（可能有鼓/气声）、节奏偏快、动态大（强弱对比明显）；（调性置信不足，这段可能更像说话而不是音乐，调性/速度仅供参考）；情感：主导 开心（开心 47%、中性 42%、生气 10%、悲伤 0%）"
 }
